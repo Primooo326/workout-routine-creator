@@ -1,0 +1,154 @@
+<div class="flex justify-between items-start w-full gap-x-2">
+  <div class="card w-3/12 h-full bg-neutral shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">Filtros</h2>
+      <ul class="menu">
+        <li>
+          <details open>
+            <summary>Nivel</summary>
+            <ul>
+              @for (item of levels; track item) {
+              <li>
+                <label class="label cursor-pointer">
+                  <span class="label-text">{{ item }}</span>
+                  <input
+                    type="checkbox"
+                    checked="checked"
+                    class="checkbox checkbox-sm"
+                  />
+                </label>
+              </li>
+
+              }
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details close>
+            <summary>Musculo</summary>
+            <ul>
+              @for (item of muscles; track item) {
+              <li>
+                <label class="label cursor-pointer">
+                  <span class="label-text">{{ item }}</span>
+                  <input
+                    type="checkbox"
+                    checked="checked"
+                    class="checkbox checkbox-sm"
+                  />
+                </label>
+              </li>
+
+              }
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details close>
+            <summary>Categorias</summary>
+            <ul>
+              @for (item of categories; track item) {
+              <li>
+                <label class="label cursor-pointer">
+                  <span class="label-text">{{ item }}</span>
+                  <input
+                    type="checkbox"
+                    checked="checked"
+                    class="checkbox checkbox-sm"
+                  />
+                </label>
+              </li>
+
+              }
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details close>
+            <summary>Equipamiento</summary>
+            <ul>
+              @for (item of equipments; track item) {
+              <li>
+                <label class="label cursor-pointer">
+                  <span class="label-text">{{ item }}</span>
+                  <input
+                    type="checkbox"
+                    checked="checked"
+                    class="checkbox checkbox-sm"
+                  />
+                </label>
+              </li>
+
+              }
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details close>
+            <summary>Mecanismos</summary>
+            <ul>
+              @for (item of mechanics; track item) {
+              <li>
+                <label class="label cursor-pointer">
+                  <span class="label-text">{{ item }}</span>
+                  <input
+                    type="checkbox"
+                    checked="checked"
+                    class="checkbox checkbox-sm"
+                  />
+                </label>
+              </li>
+
+              }
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details close>
+            <summary>Tipo de fuerza</summary>
+            <ul>
+              @for (item of forces; track item) {
+              <li>
+                <label class="label cursor-pointer">
+                  <span class="label-text">{{ item }}</span>
+                  <input
+                    type="checkbox"
+                    checked="checked"
+                    class="checkbox checkbox-sm"
+                  />
+                </label>
+              </li>
+
+              }
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="w-full h-full grid grid-cols-3">
+    @for (item of exercises; track item.id) { @defer (on viewport; on timer(5s))
+    {
+    <div class="card grid-item w-[300px] bg-neutral shadow-xl">
+      <figure>
+        <img [src]="item.imgs[0]" alt="Shoes" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">
+          {{ item.name }}
+        </h2>
+        <h3 class="font-semibold">Musculos:</h3>
+        @for (musculo of item.primaryMuscles;let i = $index; track i) {
+        <p>{{ musculo }}</p>
+        }
+        <div class="card-actions justify-end">
+          <div class="badge badge-secondary">{{ item.level }}</div>
+          <div class="badge badge-outline">{{ item.category }}</div>
+        </div>
+      </div>
+    </div>
+    }@placeholder {
+    <div>cargando...</div>
+    } }
+  </div>
+</div>

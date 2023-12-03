@@ -1,0 +1,261 @@
+<div class="flex justify-center items-center">
+  @switch (step) { @case (1) {
+
+  <form [formGroup]="formulario1">
+    <div class="card w-[500px] bg-neutral shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Información de perfil</h2>
+        <p>
+          ¡Hola! Queremos conocerte mejor para personalizar tus entrenamientos y
+          comidas. Comencemos con tu información básica.
+        </p>
+        <!-- nombre -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Nombre</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Nombre"
+            class="input input-bordered"
+            formControlName="nombre"
+          />
+        </div>
+        <!-- fecha de nacimiento -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Fecha de nacimiento</span>
+          </label>
+          <input
+            type="date"
+            placeholder="Fecha de nacimiento"
+            class="input input-bordered"
+            formControlName="fechaNacimiento"
+          />
+        </div>
+
+        <!-- genero -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Genero</span>
+          </label>
+          <select
+            class="select select-bordered w-full"
+            formControlName="genero"
+          >
+            <option disabled="disabled" selected="selected">
+              Selecciona una opción
+            </option>
+            <option>Hombre</option>
+            <option>Mujer</option>
+          </select>
+        </div>
+
+        <!-- altura lb/kl -->
+
+        <div class="form-group">
+          <label class="label">
+            <span class="label-text">Altura</span>
+          </label>
+          <div class="w-full flex gap-5">
+            <div class="form-control w-2/5">
+              <select class="select select-bordered" formControlName="cmFt">
+                <option selected="selected">Cm</option>
+                <option>Ft</option>
+              </select>
+            </div>
+
+            <div class="form-control w-3/5">
+              <input
+                type="number"
+                placeholder="Altura"
+                class="input input-bordered"
+                formControlName="altura"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- peso -->
+
+        <div class="form-group">
+          <label class="label">
+            <span class="label-text">Peso</span>
+          </label>
+          <div class="w-full flex gap-5">
+            <div class="form-control w-2/5">
+              <select class="select select-bordered" formControlName="kgLb">
+                <option selected="selected">Kg</option>
+                <option>Lb</option>
+              </select>
+            </div>
+
+            <div class="form-control w-3/5">
+              <input
+                type="number"
+                placeholder="Peso"
+                class="input input-bordered"
+                formControlName="peso"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- objetivo -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Objetivo</span>
+          </label>
+          <select
+            class="select select-bordered w-full"
+            formControlName="objetivo"
+          >
+            <option disabled="disabled" selected="selected">
+              Selecciona una opción
+            </option>
+            <option>Perder peso</option>
+            <option>Ganar peso</option>
+            <option>Mantener peso</option>
+          </select>
+        </div>
+
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary" (click)="nextStep()">
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  } @case (2) {
+  <form [formGroup]="formulario2">
+    <div class="card w-[500px] bg-neutral shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Nivel de actividad física</h2>
+        <p>Cuéntanos sobre tu nivel de actividad física actual.</p>
+        <!-- Frecuencia de entrenamiento semanal -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Frecuencia de entrenamiento semanal</span>
+          </label>
+          <select
+            class="select select-bordered w-full"
+            formControlName="frecuencia"
+          >
+            <option disabled="disabled" selected="selected">
+              Selecciona una opción
+            </option>
+            <option>1 vez por semana</option>
+            <option>2-3 veces por semana</option>
+            <option>4-5 veces por semana</option>
+            <option>6-7 veces por semana</option>
+          </select>
+        </div>
+        <!-- Intensidad de entrenamiento -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Intensidad de entrenamiento</span>
+          </label>
+          <select
+            class="select select-bordered w-full"
+            formControlName="intensidad"
+          >
+            <option disabled="disabled" selected="selected">
+              Selecciona una opción
+            </option>
+            <option>Ligero</option>
+            <option>Moderado</option>
+            <option>Intenso</option>
+          </select>
+        </div>
+
+        <!-- Actividades físicas favoritas (texarea) -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Actividades físicas favoritas</span>
+          </label>
+          <textarea
+            class="textarea textarea-bordered"
+            placeholder="Escribe aquí tus actividades físicas favoritas, si las tienes"
+            formControlName="actividad"
+          ></textarea>
+        </div>
+
+        <div class="card-actions justify-end">
+          <button class="btn btn-warning" (click)="prevStep()">Atrás</button>
+          <button class="btn btn-primary" (click)="nextStep()">
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  } @case (3) {
+  <form [formGroup]="formulario3">
+    <div class="card w-[500px] bg-neutral shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Información dietética</h2>
+        <p>
+          Ayúdanos a comprender tus preferencias dietéticas y restricciones.
+        </p>
+        <!-- Preferencias alimenticias -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Preferencias alimenticias</span>
+          </label>
+          <select
+            class="select select-bordered w-full"
+            formControlName="preferencia"
+          >
+            <option disabled="disabled" selected="selected">
+              Selecciona una opción
+            </option>
+            <option>Vegetariano</option>
+            <option>Vegano</option>
+            <option>Omnívoro</option>
+          </select>
+        </div>
+        <!-- Alergias alimentarias (texarea) -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Alergias alimentarias</span>
+          </label>
+          <textarea
+            class="textarea textarea-bordered"
+            placeholder="Escribe aquí tus alergias alimentarias, si las tienes"
+            formControlName="alergias"
+          ></textarea>
+        </div>
+        <!-- Restricciones dietéticas (texarea) -->
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Restricciones dietéticas</span>
+          </label>
+          <textarea
+            class="textarea textarea-bordered"
+            placeholder="Escribe aquí tus restricciones dietéticas, si las tienes"
+            formControlName="Restricciones"
+          ></textarea>
+        </div>
+
+        <div class="card-actions justify-end">
+          <button class="btn btn-warning" (click)="prevStep()">Atrás</button>
+          <button class="btn btn-primary" (click)="guardarInfo()">
+            Finalizar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  } @default {
+  <h1>xd</h1>
+  } }
+</div>
